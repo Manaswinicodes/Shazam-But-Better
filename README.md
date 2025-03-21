@@ -1,32 +1,84 @@
-# Subtitle Data
+# Subtitle Search Engine
 
-This directory is intended for storing subtitle files (.srt) used by the search engine.
+An advanced search engine for video subtitles with a Streamlit web interface.
 
-## How to add data
+## Installation
 
-1. Download the subtitle files from the provided Google Drive link:
-   https://drive.google.com/drive/folders/1ZJtMu05v2QcFsL1M8y5NMWJFQ2bZCljC?usp=drive_link
+1. Clone the repository and navigate to the project directory:
 
-2. Place all .srt files directly in this directory.
-
-3. The search engine will automatically detect and load these files.
-
-## Data Format
-
-The system expects subtitle files in the SRT format, which typically looks like:
-
-```
-1
-00:00:20,000 --> 00:00:24,400
-This is the first subtitle text.
-
-2
-00:00:24,600 --> 00:00:27,800
-This is the second subtitle text.
+```bash
+git clone https://github.com/Manaswinicodes/Shazam-But-Better.git
+cd subtitle-search-engine
 ```
 
-## Notes
+2. Create a virtual environment and activate it:
 
-- Large datasets may require significant processing time and memory.
-- Consider using a sample of the data for initial testing (use the `sample_size` parameter).
-- The search engine will automatically preprocess these files to remove timestamps and clean the text.
+```bash
+# On Windows
+python -m venv venv
+venv\Scripts\activate
+
+# On macOS/Linux
+python -m venv venv
+source venv/bin/activate
+```
+
+3. Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Setting Up Data
+
+Place your subtitle files (.srt format) in the `data/` directory. You can download sample subtitle files from the provided sources or use your own collection.
+
+## Running the Application
+
+There are two ways to run the application:
+
+### Option 1: Using the run script
+
+```bash
+python run_app.py
+```
+
+This script will check for dependencies and launch the Streamlit interface automatically.
+
+### Option 2: Running Streamlit directly
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+## Using the Interface
+
+1. **First-time setup**:
+   - Set the data directory path (default: "data")
+   - Set the model directory path (default: "models")
+   - Choose whether to use the enhanced search engine
+   - Check "Create new model" and click "Initialize Search Engine"
+
+2. **Searching**:
+   - Enter a search query
+   - Set the number of results to display
+   - If using enhanced search, adjust the semantic weight
+   - Click "Search"
+
+3. **Advanced Analysis** (with enhanced search):
+   - Explore document clusters
+   - Analyze cluster keywords
+   - View search engine statistics
+
+## Features
+
+- Basic search using TF-IDF vectorization
+- Enhanced semantic search using transformer models
+- Hybrid search combining keyword and semantic similarity
+- Document clustering and cluster analysis
+- Interactive visualizations
+
+## Requirements
+
+- Python 3.8+
+- See `requirements.txt` for all dependencies
